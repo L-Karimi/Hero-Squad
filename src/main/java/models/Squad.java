@@ -16,19 +16,13 @@ public class Squad {
     private Object Name;
 
     public Squad(String name, String cause, Hero hero) {
+        this.squadName = name.trim();
+        this.cause = cause.trim();
+        crossCheckHero(hero.getHeroID());
 
-}
 
-
-    public static List<Squad> getAllSquads() {
-        return squadList;
     }
 
-    public String getName() {
-        return (String) Name;
-    }
-
-    public void removeMember(Hero heroToDelete) {
-//        return null;
+    private void crossCheckHero(int heroID) {
     }
 }

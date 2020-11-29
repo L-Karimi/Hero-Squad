@@ -31,7 +31,11 @@ public class HeroTest {
         Hero newHero = setupNewHero();
         assertTrue(newHero.getName() instanceof String);
     }
-
+    @Test
+    public void getHeroAge_int() {
+        Hero newHero = setupNewHero();
+        assertEquals(45, newHero.getAge());
+    }
     @Test
     public void getHeroPower_true() {
         Hero newHero = setupNewHero();
@@ -57,6 +61,18 @@ public void getHeroWeakness_true() {
         Hero newHero = setupNewHero();
         Hero anotherNewHero = setupHero2();
         assertEquals("Krypton", Hero.findHero(newHero.getHeroID()).getName());
+    }
+    @Test
+    public void deleteSingleHero() {
+        Hero newHero = setupNewHero();
+        Hero anotherNewHero = setupHero2();
+        Hero thirdHero = new Hero("Jessica jones", 32, "Money", "Loud Noises");
+        Hero.deleteHero(anotherNewHero.getHeroID());
+        assertFalse(Hero.getHeroRegistry().contains(anotherNewHero));
+        assertEquals(3, Hero.getHeroRegistry().get(1).getHeroID());
+    }
+
+    private void assertEquals(int i, int heroID) {
     }
 
     private void assertEquals(String krypton, String name) {
