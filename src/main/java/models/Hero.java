@@ -48,17 +48,26 @@ public class Hero {
         return name;
     }
 
+    public int getAge() {
+        return age;
+    }
+    public String getPower() {
+        return power;
+    }
+
+    public String getWeakness() {
+        return weakness;
+    }
+
     public Hero() {
 
 
         return ;
     }
 
-    public double getAge() {
-        return 0;
-    }
 
 
-    public void getPower() {
-    }
+
+
+
 }

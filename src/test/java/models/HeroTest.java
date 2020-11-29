@@ -26,12 +26,23 @@ public class HeroTest {
         Hero newHero = setupNewHero();
         assertTrue(newHero instanceof Hero);
     }
+    @Test
+    public void getHeroName_true() {
+        Hero newHero = setupNewHero();
+        assertTrue(newHero.getName() instanceof String);
+    }
 
     @Test
     public void getHeroPower_true() {
         Hero newHero = setupNewHero();
         assertEquals();
     }
+
+@Test
+public void getHeroWeakness_true() {
+    Hero newHero = setupNewHero();
+    assertTrue(newHero.getWeakness() instanceof String);
+}
 
 
     private void assertEquals() {
