@@ -77,7 +77,13 @@ public class App {
                     model.put("newHero", buildHero);
                     return new ModelAndView(model, "submit.hbs");
                 }, new HandlebarsTemplateEngine());
-
+                post("/success", (request, response) -> {
+                    Map<String, Object> model = new HashMap<>();
+                    String uniqueId = request.queryParams("uniqueId");
+                    request.session().attribute("uniqueId", uniqueId);
+                    model.put("uniqueId", uniqueId);
+                    return new ModelAndView(model, "success.hbs");
+                }, new HandlebarsTemplateEngine());
 
 
             }
