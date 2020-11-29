@@ -110,6 +110,12 @@ public class App {
                     model.put("squadlessHeroes", squadlessHeroes);
                     return new ModelAndView(model, "squad-form.hbs");
                 }, new HandlebarsTemplateEngine());
+                post("/squads/new", (request, response) -> {
+                    Map<String, Object> model = new HashMap<>();
+                    List<Hero> squadlessHeroes = new ArrayList<>();
+                    for (Hero hero : Hero.getHeroRegistry()) {
+                        if (hero.getSquadAlliance().equals("")) {
+                            squadlessHeroes.add(hero);
             }
 }
 
