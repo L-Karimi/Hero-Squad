@@ -21,7 +21,16 @@ public class Squad {
         crossCheckHero(hero.getHeroID());
 
 
+
+     if (isRegisteredHero) {
+        hero.setSquadAlliance(squadName);
+        heroMembers.add(hero);
+        squadList.add(this);
+        this.squadId = squadList.size();
+    } else {
+        System.out.println("HERO ISN'T REGISTERED");
     }
+}
 
     private void crossCheckHero(int heroID) {
     }
