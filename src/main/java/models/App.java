@@ -47,7 +47,40 @@ public class App {
                 }, new HandlebarsTemplateEngine());
 
 
-    }
+                get("/", (request, response) -> {
+                            Map<String, Object> model = new HashMap<String, Object>();
+                            return new ModelAndView(new HashMap(), "main.hbs");
+                        }, new HandlebarsTemplateEngine()
+                );
+
+
+                get("/Hero-form",(req, res) ->{
+                    Map<String, Object> model = new HashMap<>();
+                    return new ModelAndView(model, "Hero-form.hbs");
+                }, new HandlebarsTemplateEngine());
+
+
+                get("/Hero", (request, response) -> {
+                    Map<String, Object> model = new HashMap<>();
+                    return new ModelAndView(model, "Hero.hbs");
+                }, new HandlebarsTemplateEngine());
+
+                post("/new/hero", (request, response) -> {
+                    Map<String, Object> model = new HashMap<>();
+                    String name = request.queryParams("name");
+                    Integer age = Integer.parseInt(request.queryParams("age"));
+                    String power = request.queryParams("power");
+                    String weakness = request.queryParams("weakness");
+                    Hero buildHero = new Hero(name, age, power, weakness);
+                    request.session().attribute("item", name);
+                    model.put("item", request.session().attribute("item"));
+                    model.put("newHero", buildHero);
+                    return new ModelAndView(model, "submit.hbs");
+                }, new HandlebarsTemplateEngine());
+
+
+
+            }
 }
 
 

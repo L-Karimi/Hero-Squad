@@ -4,3 +4,35 @@
     <li class="nav-item"><a class="nav-link" href="/squads/new">Create a New Squad</a></li>
     <li class="nav-item"><a class="nav-link" href="/heroes">All Heroes & Squads</a></li>
     {{/partial}}
+
+{{#partial "content"}}
+    {{#if uniqueId}}
+        <div id="returning-agent">
+            <h2 class="text-center"><u>Welcome back, {{uniqueId}}</u></h2>
+
+            <h4><b>Here's an overview of your registry</b></h4>
+            <div class="row">
+                <div class="col-md-3"><p>Heroes Registered: {{totalHeroes}}</p></div>
+                <div class="col-md-3"><p>Squads Present: {{totalSquads}}</p></div>
+                <div class="col-md-3"><p>Heroes w/ squads: {{squadfullHeroes}}</p></div>
+                <div class="col-md-3"><p>Heroes without squads: {{squadlessHeroes}}</p></div>
+            </div>
+
+
+
+        </div>
+    {{else}}
+        <div id="session-form">
+            <h3 class="text-center">New agent detected, please let us know who you are....</h3>
+            <form action="/success" method="post">
+                <label for="uniqueId">Agent Name</label>
+                <input type="text" id="uniqueId" name="uniqueId" class="form-control"
+                       placeholder="name?">
+                <button class="btn btn-outline-secondary">Save</button>
+            </form>
+        </div>
+    {{/if}}
+
+{{/partial}}
+
+{{> layout.hbs}}

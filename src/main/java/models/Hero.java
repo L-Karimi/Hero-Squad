@@ -31,6 +31,10 @@ public class Hero {
 
     }
 
+    public static ArrayList<Hero> getAllInstances() {
+        return null;
+    }
+
     public void setPower(String power) {
         this.power = power;
     }
