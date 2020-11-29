@@ -20,10 +20,15 @@ public class Hero {
         this.weakness = weakness.trim();
         findDuplicateHero(this);
 
+        if (duplicate) {
+            System.out.println("Duplicate Hero!!");
+        } else {
+            heroRegistry.add(this);
+            this.heroID = heroRegistry.size();
+            this.squadAlliance = "";
 
-
+        }
     }
-
     private void findDuplicateHero(Hero hero) {
     }
 
