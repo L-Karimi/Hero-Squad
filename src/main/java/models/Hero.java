@@ -36,9 +36,29 @@ public class Hero {
     public void setPower(String power) {
         this.power = power;
     }
+    public void setWeakness(String weakness) {
+        this.weakness = weakness;
+    }
     private void findDuplicateHero(Hero hero) {
+    }
+    public void setSquadAlliance(String squadAlliance) {
+        this.squadAlliance = squadAlliance;
+    }
+    public String getName() {
+        return name;
+    }
+
+    public Hero() {
+
+
+        return ;
+    }
+
+    public double getAge() {
+        return 0;
     }
 
 
-
+    public void getPower() {
+    }
 }

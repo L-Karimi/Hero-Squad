@@ -27,6 +27,15 @@ public class HeroTest {
         assertTrue(newHero instanceof Hero);
     }
 
+    @Test
+    public void getHeroPower_true() {
+        Hero newHero = setupNewHero();
+        assertEquals();
+    }
+
+
+    private void assertEquals() {
+    }
 
 
     @After
