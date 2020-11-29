@@ -28,10 +28,106 @@ public class Squad {
         squadList.add(this);
         this.squadId = squadList.size();
     } else {
-        System.out.println("HERO ISN'T REGISTERED");
+        System.out.println("UNREGISTERED HERO");
     }
+}
+    public String getName() {
+        return squadName;
+    }
+    public int getSquadId() {
+        return squadId;
+    }
+
+    public void addMembers(Hero hero) {
+        if (heroMembers.size() >= 3) {
+            isSquadFull = true;
+        } else {
+            heroMembers.add(hero);
+        }
+    }
+
+    public boolean getSquadFull() {
+        return isSquadFull;
+    }
+
+    public List<Hero> getMembers() {
+        return heroMembers;
+    }
+
+    public String getCause() {
+        return cause;
+    }
+
+    public void changeHeroSquad(Hero hero, Squad newSquad) {
+        if (heroMembers.size() >= 3) {
+            isSquadFull = true;
+        } else {
+            Squad currentSquad = null;
+            for (Squad squad : squadList) {
+                if (hero.getSquadAlliance().equalsIgnoreCase(squad.squadName)) {
+                    currentSquad = squad;
+                    break;
+                }
+            }
+
+            for (Squad squad : squadList) {
+                if (newSquad.squadName.equalsIgnoreCase(squad.squadName)) {
+                    if (!hero.getSquadAlliance().equalsIgnoreCase("")) {
+                        currentSquad.heroMembers.remove(hero);
+                        newSquad.heroMembers.add(hero);
+                        hero.updateSquad(newSquad.squadName);
+                        break;
+                    } else {
+                        newSquad.heroMembers.add(hero);
+                        hero.setSquadAlliance(newSquad.squadName);
+                    }
+                } else {
+                    System.out.println("NON-EXSTANT SQUAD");
+                }
+            }
+        }
+    }
+
+    public void removeMember(Hero hero) {
+        if (isSquadFull) {
+            isSquadFull = false;
+        }
+        hero.updateSquad("");
+        heroMembers.remove(hero);
+
+        if (heroMembers.isEmpty()) {
+            selfDelete();
+        }
+    }
+
+    public void clearMemberLists() {
+        heroMembers.clear();
+    }
+
+    public static List<Squad> getAllSquads() {
+        return squadList;
+    }
+
+    public static void clearSquadList() {
+        squadList.clear();
+    }
+
+    public static Squad findSquad(int searchId) {
+        return squadList.get(searchId - 1);
+    }
+
+    private void selfDelete() {
+        Squad.squadList.remove(this);
+    }
+
+    private static void crossCheckHero(int idToCheck) {
+        for (Hero hero : Hero.getHeroRegistry()) {
+            if (hero.getHeroID() == idToCheck) {
+                isRegisteredHero = true;
+                break;
+            }
+        }
+    }
+
 }
 
-    private void crossCheckHero(int heroID) {
-    }
-}
