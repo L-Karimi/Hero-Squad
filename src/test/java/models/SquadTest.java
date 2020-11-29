@@ -30,6 +30,11 @@ public class SquadTest {
         Squad squad = setupNewSquad(setupNewHero());
         assertTrue(squad instanceof Squad);
     }
+    @Test
+    public void getSquadName() {
+        Squad squad = setupNewSquad(setupNewHero());
+        assertTrue(squad.getName() instanceof String);
+    }
 
     @After
     public void tearDown() throws Exception {
