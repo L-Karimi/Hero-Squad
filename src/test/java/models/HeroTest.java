@@ -18,7 +18,7 @@ public class HeroTest {
     }
 
     private Hero setupHero2() {
-        return new Hero("Kryptonite", 105, "magic", "range");
+        return new Hero("Krypton", 105, "magic", "range");
     }
 
     @Test
@@ -43,6 +43,24 @@ public void getHeroWeakness_true() {
     Hero newHero = setupNewHero();
     assertTrue(newHero.getWeakness() instanceof String);
 }
+
+
+    @Test
+    public void getHeroList_storeTwoHeroes_true() {
+        Hero newHero = setupNewHero();
+        Hero anotherNewHero = setupHero2();
+        assertTrue(Hero.getHeroRegistry().contains(newHero));
+        assertTrue(Hero.getHeroRegistry().contains(anotherNewHero));
+    }
+    @Test
+    public void findHero_searchForHeroById_String() {
+        Hero newHero = setupNewHero();
+        Hero anotherNewHero = setupHero2();
+        assertEquals("Krypton", Hero.findHero(newHero.getHeroID()).getName());
+    }
+
+    private void assertEquals(String krypton, String name) {
+    }
 
 
     private void assertEquals() {
