@@ -98,6 +98,18 @@ public class App {
                     Hero newHero = new Hero(name, age, power, weakness);
                     return new ModelAndView(model, "success.hbs");
                 }, new HandlebarsTemplateEngine());
+
+                get("/squads/new", (request, response) -> {
+                    Map<String, Object> model = new HashMap<>();
+                    List<Hero> squadlessHeroes = new ArrayList<>();
+                    for (Hero hero : Hero.getHeroRegistry()) {
+                        if (hero.getSquadAlliance().equals("")) {
+                            squadlessHeroes.add(hero);
+                        }
+                    }
+                    model.put("squadlessHeroes", squadlessHeroes);
+                    return new ModelAndView(model, "squad-form.hbs");
+                }, new HandlebarsTemplateEngine());
             }
 }
 
