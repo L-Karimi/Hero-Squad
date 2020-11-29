@@ -39,7 +39,31 @@ public class SquadTest {
     public void getSquadCause() {
         Squad squad = setupNewSquad(setupNewHero());
         assertTrue(squad.getCause() instanceof String);
+    } @Test
+    public void addingHeroToExistingSquad() {
+        Squad squad = setupNewSquad(setupNewHero());
+        squad.addMembers(setupHero2());
+        assertEquals(2, squad.getMembers().size());
     }
+    @Test
+    public void addHero_NotExeedLimitOf1_int() {
+        Squad squad = setupNewSquad(setupNewHero());
+        squad.addMembers(setupHero2());
+        assertEquals(2, squad.getMembers().size());
+    }
+
+    @Test
+    public void addHero_NotExeedLimitOf3_int() {
+        Squad squad = setupNewSquad(setupNewHero());
+        squad.addMembers(setupHero2());
+        squad.addMembers(new Hero("1", 1, "1", "1"));
+        squad.addMembers(new Hero("2", 1, "1", "1"));
+        squad.addMembers(new Hero("3", 1, "1", "1"));
+        squad.addMembers(new Hero("4", 1, "1", "1"));
+        assertEquals(3, squad.getMembers().size());
+        assertTrue(squad.getSquadFull());
+    }
+
 
     @After
     public void tearDown() throws Exception {
