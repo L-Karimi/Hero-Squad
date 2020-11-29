@@ -84,7 +84,11 @@ public class App {
                     model.put("uniqueId", uniqueId);
                     return new ModelAndView(model, "success.hbs");
                 }, new HandlebarsTemplateEngine());
-
+                get("/heroes/new", (request, response) -> {
+                    Map<String, Object> model = new HashMap<>();
+                    model.put("uniqueId", request.session().attribute("uniqueId"));
+                    return new ModelAndView(model, "hero-form.hbs");
+                }, new HandlebarsTemplateEngine());
 
             }
 }
