@@ -31,6 +31,6 @@ public class HeroTest {
 
     @After
     public void tearDown() throws Exception {
-
+        Hero.clearHeroRegistry();
     }
 }

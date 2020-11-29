@@ -29,6 +29,13 @@ public class Hero {
 
         }
     }
+
+    public static void clearHeroRegistry() {
+    }
+
+    public void setPower(String power) {
+        this.power = power;
+    }
     private void findDuplicateHero(Hero hero) {
     }
 
