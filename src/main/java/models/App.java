@@ -1,15 +1,146 @@
-package models;
-import  static spark.Spark.*;
-import  models.Hero;
-import models.Squad;
-import  spark.ModelAndView;
-import spark.template.handlebars.HandlebarsTemplateEngine;
+package models;//package models;
+//import  static spark.Spark.*;
+//import  models.Hero;
+//import models.Squad;
+//import  spark.ModelAndView;
+//import spark.template.handlebars.HandlebarsTemplateEngine;
+//
+//
+//import java.util.ArrayList;
+//import java.util.HashMap;
+//import java.util.List;
+//import java.util.Map;
+//
+//public class App {
+//            public static void main(String[] args) {
+//            staticFileLocation("/public");
+//
+//            ProcessBuilder process = new ProcessBuilder();
+//            int port;
+//
+//            if (process.environment().get("PORT") != null) {
+//                port = Integer.parseInt(process.environment().get("PORT"));
+//            } else {
+//                port = 4567;
+//            }
+//
+//            port(port);
+//                get("/", (request, response) -> {
+//                    Map<String, Object> model = new HashMap<>();
+//                    int totalHeroes = Hero.getHeroRegistry().size();
+//                    int totalSquads = Squad.getAllSquads().size();
+//                    int squadlessHeroes = 0;
+//                    int squadfullHeroes = 0;
+//                    for (Hero hero : Hero.getHeroRegistry()) {
+//                        if (hero.getSquadAlliance().equals("")) {
+//                            squadlessHeroes += 1;
+//                        } else {
+//                            squadfullHeroes += 1;
+//                        }
+//                    }
+//                    model.put("totalHeroes", totalHeroes);
+//                    model.put("totalSquads", totalSquads);
+//                    model.put("squadlessHeroes", squadlessHeroes);
+//                    model.put("squadfullHeroes", squadfullHeroes);
+//                    model.put("uniqueId", request.session().attribute("uniqueId"));
+//                    return new ModelAndView(model, "index.hbs");
+//                }, new HandlebarsTemplateEngine());
+//
+//
+//                get("/", (request, response) -> {
+//                            Map<String, Object> model = new HashMap<String, Object>();
+//                            return new ModelAndView(new HashMap(), "main.hbs");
+//                        }, new HandlebarsTemplateEngine()
+//                );
+//
+//
+//                get("/Hero-form",(req, res) ->{
+//                    Map<String, Object> model = new HashMap<>();
+//                    return new ModelAndView(model, "Hero-form.hbs");
+//                }, new HandlebarsTemplateEngine());
+//
+//
+//                get("/Hero", (request, response) -> {
+//                    Map<String, Object> model = new HashMap<>();
+//                    return new ModelAndView(model, "Hero.hbs");
+//                }, new HandlebarsTemplateEngine());
+//
+//                post("/new/hero", (request, response) -> {
+//                    Map<String, Object> model = new HashMap<>();
+//                    String name = request.queryParams("name");
+//                    Integer age = Integer.parseInt(request.queryParams("age"));
+//                    String power = request.queryParams("power");
+//                    String weakness = request.queryParams("weakness");
+//                    Hero buildHero = new Hero(name, age, power, weakness);
+//                    request.session().attribute("item", name);
+//                    model.put("item", request.session().attribute("item"));
+//                    model.put("newHero", buildHero);
+//                    return new ModelAndView(model, "submit.hbs");
+//                }, new HandlebarsTemplateEngine());
+//                post("/success", (request, response) -> {
+//                    Map<String, Object> model = new HashMap<>();
+//                    String uniqueId = request.queryParams("uniqueId");
+//                    request.session().attribute("uniqueId", uniqueId);
+//                    model.put("uniqueId", uniqueId);
+//                    return new ModelAndView(model, "success.hbs");
+//                }, new HandlebarsTemplateEngine());
+//                get("/heroes/new", (request, response) -> {
+//                    Map<String, Object> model = new HashMap<>();
+//                    model.put("uniqueId", request.session().attribute("uniqueId"));
+//                    return new ModelAndView(model, "hero-form.hbs");
+//                }, new HandlebarsTemplateEngine());
+//                post("/heroes/new", (request, response) -> {
+//                    Map<String, Object> model = new HashMap<>();
+//                    String name = request.queryParams("name");
+//                    int age = Integer.parseInt(request.queryParams("age"));
+//                    String power = request.queryParams("power");
+//                    String weakness = request.queryParams("weakness");
+//                    Hero newHero = new Hero(name, age, power, weakness);
+//                    return new ModelAndView(model, "success.hbs");
+//                }, new HandlebarsTemplateEngine());
+//
+//                get("/squads/new", (request, response) -> {
+//                    Map<String, Object> model = new HashMap<>();
+//                    List<Hero> squadlessHeroes = new ArrayList<>();
+//                    for (Hero hero : Hero.getHeroRegistry()) {
+//                        if (hero.getSquadAlliance().equals("")) {
+//                            squadlessHeroes.add(hero);
+//                        }
+//                    }
+//                    model.put("squadlessHeroes", squadlessHeroes);
+//                    return new ModelAndView(model, "squad-form.hbs");
+//                }, new HandlebarsTemplateEngine());
+//                post("/squads/new", (request, response) -> {
+//                    Map<String, Object> model = new HashMap<>();
+//                    List<Hero> squadlessHeroes = new ArrayList<>();
+//                    for (Hero hero : Hero.getHeroRegistry()) {
+//                        if (hero.getSquadAlliance().equals("")) {
+//                            squadlessHeroes.add(hero);
+//                        }
+//                    }
+//
+//
+//                    return null;
+//                });
+//            }}
+//
+//
+//
+//
 
+
+import static spark.Spark.*;
+
+import models.Hero;
+import models.Squad;
+import spark.ModelAndView;
+import spark.template.handlebars.HandlebarsTemplateEngine;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 
 public class App {
             public static void main(String[] args) {
@@ -24,103 +155,221 @@ public class App {
                 port = 4567;
             }
 
-            port(port);
-                get("/", (request, response) -> {
-                    Map<String, Object> model = new HashMap<>();
-                    int totalHeroes = Hero.getHeroRegistry().size();
-                    int totalSquads = Squad.getAllSquads().size();
-                    int squadlessHeroes = 0;
-                    int squadfullHeroes = 0;
-                    for (Hero hero : Hero.getHeroRegistry()) {
-                        if (hero.getSquadAlliance().equals("")) {
-                            squadlessHeroes += 1;
-                        } else {
-                            squadfullHeroes += 1;
-                        }
-                    }
-                    model.put("totalHeroes", totalHeroes);
-                    model.put("totalSquads", totalSquads);
-                    model.put("squadlessHeroes", squadlessHeroes);
-                    model.put("squadfullHeroes", squadfullHeroes);
-                    model.put("uniqueId", request.session().attribute("uniqueId"));
-                    return new ModelAndView(model, "index.hbs");
-                }, new HandlebarsTemplateEngine());
+        port(port);
 
-
-                get("/", (request, response) -> {
-                            Map<String, Object> model = new HashMap<String, Object>();
-                            return new ModelAndView(new HashMap(), "main.hbs");
-                        }, new HandlebarsTemplateEngine()
-                );
-
-
-                get("/Hero-form",(req, res) ->{
-                    Map<String, Object> model = new HashMap<>();
-                    return new ModelAndView(model, "Hero-form.hbs");
-                }, new HandlebarsTemplateEngine());
-
-
-                get("/Hero", (request, response) -> {
-                    Map<String, Object> model = new HashMap<>();
-                    return new ModelAndView(model, "Hero.hbs");
-                }, new HandlebarsTemplateEngine());
-
-                post("/new/hero", (request, response) -> {
-                    Map<String, Object> model = new HashMap<>();
-                    String name = request.queryParams("name");
-                    Integer age = Integer.parseInt(request.queryParams("age"));
-                    String power = request.queryParams("power");
-                    String weakness = request.queryParams("weakness");
-                    Hero buildHero = new Hero(name, age, power, weakness);
-                    request.session().attribute("item", name);
-                    model.put("item", request.session().attribute("item"));
-                    model.put("newHero", buildHero);
-                    return new ModelAndView(model, "submit.hbs");
-                }, new HandlebarsTemplateEngine());
-                post("/success", (request, response) -> {
-                    Map<String, Object> model = new HashMap<>();
-                    String uniqueId = request.queryParams("uniqueId");
-                    request.session().attribute("uniqueId", uniqueId);
-                    model.put("uniqueId", uniqueId);
-                    return new ModelAndView(model, "success.hbs");
-                }, new HandlebarsTemplateEngine());
-                get("/heroes/new", (request, response) -> {
-                    Map<String, Object> model = new HashMap<>();
-                    model.put("uniqueId", request.session().attribute("uniqueId"));
-                    return new ModelAndView(model, "hero-form.hbs");
-                }, new HandlebarsTemplateEngine());
-                post("/heroes/new", (request, response) -> {
-                    Map<String, Object> model = new HashMap<>();
-                    String name = request.queryParams("name");
-                    int age = Integer.parseInt(request.queryParams("age"));
-                    String power = request.queryParams("power");
-                    String weakness = request.queryParams("weakness");
-                    Hero newHero = new Hero(name, age, power, weakness);
-                    return new ModelAndView(model, "success.hbs");
-                }, new HandlebarsTemplateEngine());
-
-                get("/squads/new", (request, response) -> {
-                    Map<String, Object> model = new HashMap<>();
-                    List<Hero> squadlessHeroes = new ArrayList<>();
-                    for (Hero hero : Hero.getHeroRegistry()) {
-                        if (hero.getSquadAlliance().equals("")) {
-                            squadlessHeroes.add(hero);
-                        }
-                    }
-                    model.put("squadlessHeroes", squadlessHeroes);
-                    return new ModelAndView(model, "squad-form.hbs");
-                }, new HandlebarsTemplateEngine());
-                post("/squads/new", (request, response) -> {
-                    Map<String, Object> model = new HashMap<>();
-                    List<Hero> squadlessHeroes = new ArrayList<>();
-                    for (Hero hero : Hero.getHeroRegistry()) {
-                        if (hero.getSquadAlliance().equals("")) {
-                            squadlessHeroes.add(hero);
+        //get: retrieve user session in homepage first
+        get("/", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            int totalHeroes = Hero.getHeroRegistry().size();
+            int totalSquads = Squad.getAllSquads().size();
+            int squadlessHeroes = 0;
+            int squadfullHeroes = 0;
+            for (Hero hero : Hero.getHeroRegistry()) {
+                if (hero.getSquadAlliance().equals("")) {
+                    squadlessHeroes += 1;
+                } else {
+                    squadfullHeroes += 1;
+                }
             }
+            model.put("totalHeroes", totalHeroes);
+            model.put("totalSquads", totalSquads);
+            model.put("squadlessHeroes", squadlessHeroes);
+            model.put("squadfullHeroes", squadfullHeroes);
+            model.put("uniqueId", request.session().attribute("uniqueId"));
+            return new ModelAndView(model, "index.hbs");
+        }, new HandlebarsTemplateEngine());
+
+
+        post("/success", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            String uniqueId = request.queryParams("uniqueId");
+            request.session().attribute("uniqueId", uniqueId);
+            model.put("uniqueId", uniqueId);
+            return new ModelAndView(model, "success.hbs");
+        }, new HandlebarsTemplateEngine());
+
+
+        get("/heroes/new", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            model.put("uniqueId", request.session().attribute("uniqueId"));
+            return new ModelAndView(model, "hero-form.hbs");
+        }, new HandlebarsTemplateEngine());
+
+
+        post("/heroes/new", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            String name = request.queryParams("name");
+            int age = Integer.parseInt(request.queryParams("age"));
+            String power = request.queryParams("power");
+            String weakness = request.queryParams("weakness");
+            Hero newHero = new Hero(name, age, power, weakness);
+            return new ModelAndView(model, "success.hbs");
+        }, new HandlebarsTemplateEngine());
+
+
+        get("/squads/new", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            List<Hero> squadlessHeroes = new ArrayList<>();
+            for (Hero hero : Hero.getHeroRegistry()) {
+                if (hero.getSquadAlliance().equals("")) {
+                    squadlessHeroes.add(hero);
+                }
+            }
+            model.put("squadlessHeroes", squadlessHeroes);
+            return new ModelAndView(model, "squad-form.hbs");
+        }, new HandlebarsTemplateEngine());
+
+
+        post("/squads/new", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            List<Hero> squadlessHeroes = new ArrayList<>();
+            for (Hero hero : Hero.getHeroRegistry()) {
+                if (hero.getSquadAlliance().equals("")) {
+                    squadlessHeroes.add(hero);
+                }
+            }
+
+            String name = request.queryParams("name");
+            String cause = request.queryParams("cause");
+            String heroName = request.queryParams("founder");
+            Hero squadFounder = null;
+            for (Hero hero : squadlessHeroes) {
+                if (hero.getName().equalsIgnoreCase(heroName)) {
+                    squadFounder = hero;
+                    break;
+                }
+            }
+            assert squadFounder != null;
+            Squad newSquad = new Squad(name, cause, squadFounder);
+            return new ModelAndView(model, "success.hbs");
+        }, new HandlebarsTemplateEngine());
+
+
+        get("/heroes", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            model.put("allHeroes", Hero.getHeroRegistry());
+            model.put("allSquads", Squad.getAllSquads());
+            model.put("uniqueId", request.session().attribute("uniqueId"));
+            return new ModelAndView(model, "heroes-squads.hbs");
+        }, new HandlebarsTemplateEngine());
+
+
+        get("/heroes/:id", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            int itemId = Integer.parseInt(request.params(":id"));
+            Hero foundHero = Hero.findHero(itemId);
+            model.put("hero", foundHero);
+            model.put("uniqueId", request.session().attribute("uniqueId"));
+            return new ModelAndView(model, "hero-details.hbs");
+        }, new HandlebarsTemplateEngine());
+
+
+        get("/squads/:id", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            int itemId = Integer.parseInt(request.params(":id"));
+            Squad foundSquad = Squad.findSquad(itemId);
+            model.put("squad", foundSquad);
+            model.put("uniqueId", request.session().attribute("uniqueId"));
+            return new ModelAndView(model, "squad-details.hbs");
+        }, new HandlebarsTemplateEngine());
+
+
+        post("/heroes/:id/update", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            int itemId = Integer.parseInt(request.params(":id"));
+            Hero updateHero = Hero.findHero(itemId);
+            updateHero.updateName(request.queryParams("name"));
+            updateHero.updateAge(Integer.parseInt(request.queryParams("age")));
+            updateHero.updatePower(request.queryParams("power"));
+            updateHero.updateWeakness(request.queryParams("weakness"));
+            return new ModelAndView(model, "success.hbs");
+        }, new HandlebarsTemplateEngine());
+
+
+        get("/heroes/:id/update", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            int itemId = Integer.parseInt(request.params(":id"));
+            Hero updateHero = Hero.findHero(itemId);
+            model.put("updateHero", updateHero);
+            model.put("uniqueId", request.session().attribute("uniqueId"));
+            return new ModelAndView(model, "hero-form.hbs");
+        }, new HandlebarsTemplateEngine());
+
+
+        get("/heroes/:id/remove", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            int itemId = Integer.parseInt(request.params(":id"));
+            Hero.deleteHero(itemId);
+            model.put("uniqueId", request.session().attribute("uniqueId"));
+            return new ModelAndView(model, "heroes-squads.hbs");
+        }, new HandlebarsTemplateEngine());
+
+
+        post("/squads/:id/update", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            int itemId = Integer.parseInt(request.params(":id"));
+            Squad foundSquad = Squad.findSquad(itemId);
+            String heroName = request.queryParams("addHero");
+            Hero heroToAdd = null;
+            for (Hero hero : Hero.getHeroRegistry()) {
+                if (hero.getName().equalsIgnoreCase(heroName)) {
+                    heroToAdd = hero;
+                    break;
+                }
+            }
+            foundSquad.changeHeroSquad(heroToAdd, foundSquad);
+            model.put("uniqueId", request.session().attribute("uniqueId"));
+            return new ModelAndView(model, "success.hbs");
+        }, new HandlebarsTemplateEngine());
+
+
+        get("/squads/:id/update", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            int itemId = Integer.parseInt(request.params(":id"));
+            Squad foundSquad = Squad.findSquad(itemId);
+            List<Hero> nonMembers = new ArrayList<>();
+            for (Hero hero : Hero.getHeroRegistry()) {
+                if (!hero.getSquadAlliance().equalsIgnoreCase(foundSquad.getName())) {
+                    nonMembers.add(hero);
+                }
+            }
+            model.put("nonMembers", nonMembers);
+            model.put("squad", foundSquad);
+            model.put("uniqueId", request.session().attribute("uniqueId"));
+            return new ModelAndView(model, "update-form.hbs");
+        }, new HandlebarsTemplateEngine());
+
+
+        post("/squads/:id/remove", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            int itemId = Integer.parseInt(request.params(":id"));
+            Squad foundSquad = Squad.findSquad(itemId);
+            String heroName = request.queryParams("removeHero");
+            Hero heroToRemove = null;
+            for (Hero hero : Hero.getHeroRegistry()) {
+                if (hero.getName().equalsIgnoreCase(heroName)) {
+                    heroToRemove = hero;
+                    break;
+                }
+            }
+            foundSquad.removeMember(heroToRemove);
+            model.put("uniqueId", request.session().attribute("uniqueId"));
+            return new ModelAndView(model, "success.hbs");
+        }, new HandlebarsTemplateEngine());
+
+
+        get("/squads/:id/remove", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            int itemId = Integer.parseInt(request.params(":id"));
+            Squad foundSquad = Squad.findSquad(itemId);
+            model.put("members", foundSquad.getMembers());
+            model.put("squad", foundSquad);
+            model.put("uniqueId", request.session().attribute("uniqueId"));
+            return new ModelAndView(model, "update-form.hbs");
+        }, new HandlebarsTemplateEngine());
+
+
+
+
+    }
 }
-
-
-
-
-
-
