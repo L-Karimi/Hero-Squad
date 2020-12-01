@@ -3,7 +3,7 @@
 # AUTHOR
 * Lucy Karimi
 
-##DESCRIPTION
+## DESCRIPTION
 * Hero-Squad app is an app that allows a user to create a new hero and also add the new character to a prefferable Hero-Squad.
 
 ## PROJECT SETUP INSTRUCTIONS
@@ -16,15 +16,15 @@ Visit the link - https://github.com/luciahroyalty101/Hero-Squad
 5. Then open the terminal and write $ gradle run.
 
 ### Link to live site
-
+https://luciahherosquad.herokuapp.com/
 
 ## TECNOLOGIES USED
 * java
 
-###SUPPORT AND CONTACT DETAILS
+### SUPPORT AND CONTACT DETAILS
 * twitter@luciahkei101
 
-##LICENCE
+## LICENCE
 * Copyright 2020 Lucy Karimi
   
   Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:

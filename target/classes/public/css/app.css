@@ -14,11 +14,11 @@ header,
   }
 }
 
-.jumbotron{
 
-    background-color:peach;
-
+.hero{
+background-color:blue;
 }
+
 
 
 @media (max-width: 991px) {
