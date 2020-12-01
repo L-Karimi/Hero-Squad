@@ -1,9 +1,3 @@
-{{#partial "navbar"}}
-    <li class="nav-item active"><a class="nav-link" href="/">Home</a></li>
-    <li class="nav-item"><a class="nav-link" href="/heroes/new">Recruit a New Hero</a></li>
-    <li class="nav-item"><a class="nav-link" href="/squads/new">Create a New Squad</a></li>
-{{/partial}}
-
 {{#partial "content"}}
     <div class="text-center">
         <h2><u>{{hero.name}}</u></h2>
@@ -26,7 +20,7 @@
                 <p>{{hero.weakness}}</p>
             </div>
         </div>
-        <a class="btn btn-outline-primary" href="/heroes/{{hero.heroID}}/update">Update Info</a>
+        <a class="btn btn-outline-primary" href="/heros/{{hero.heroID}}/update">Update Info</a>
         <a class="btn btn-outline-danger" href="/heroes/{{hero.heroID}}/remove">Delete Permanently</a>
     </div>
 {{/partial}}

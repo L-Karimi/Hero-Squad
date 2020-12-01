@@ -1,10 +1,5 @@
-{{#partial "navbar"}}
-    <li class="nav-item active"><a class="nav-link" href="/">Home</a></li>
-    <li class="nav-item"><a class="nav-link" href="/heroes/new">Recruit a New Hero</a></li>
-    <li class="nav-item"><a class="nav-link" href="/squads/new">Create a New Squad</a></li>
-    {{/partial}}
-
 {{#partial "content"}}
+    <body style="background-image: url('images/supper1.jpeg'); background-size:cover; background-repeat:no-repeat;>
     <h2 class="text-center">Recruit a New Hero</h2>
     <div id="newHeroForm">
         {{#if updateHero}}
@@ -53,6 +48,7 @@
             </form>
         {{/if}}
     </div>
+    </body>
 {{/partial}}
 
 {{> layout.hbs}}

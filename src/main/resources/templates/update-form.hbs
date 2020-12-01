@@ -1,10 +1,3 @@
-{{#partial "navbar"}}
-    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-    <li class="nav-item"><a class="nav-link" href="/heroes/new">Recruit a New Hero</a></li>
-    <li class="nav-item"><a class="nav-link" href="/squads/new">Create a New Squad</a></li>
-    <li class="nav-item"><a class="nav-link" href="/heroes">All Heroes & Squads</a></li>
-{{/partial}}
-
 {{#partial "content"}}
     {{#if members}}
         <form action="/squads/{{squad.squadId}}/remove" method="post">
