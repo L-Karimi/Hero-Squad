@@ -1,0 +1,56 @@
+<div class="jumbotron">
+{{#block "header"}}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{#block "tittle"}}Hero Squad{{/block}}</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Acme|Bangers|Poppins:500&display=swap" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel='stylesheet' type="text/css" href='/css/app.css'>
+</head>
+<body>
+
+<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+<!--       <img id="navLogo" src="./images/img2.jpeg" height="50px">-->
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+        <li class="nav-item active"><a class="nav-link" href="/">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="/heroes/new">Recruit a New Hero</a></li>
+        <li class="nav-item"><a class="nav-link" href="/squads/new">Create a New Squad</a></li>
+        <li class="nav-item"><a class="nav-link" href="/heros">All Heroes & Squads</a></li>
+                </ul>
+    </div>
+           </div>
+
+</nav>
+{{/block}}
+
+<div class="jumbotron">
+    <h1 class="text-center">Hero Squads</h1>
+    <h5 class="text-center">The Superhero Registry</h5>
+</div>
+
+<div>
+    {{#block "content"}}
+    {{/block}}
+</div>
+
+{{#block "footer"}}
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+
+    </body>
+    </html>
+    {{/block}}
+
+</div>

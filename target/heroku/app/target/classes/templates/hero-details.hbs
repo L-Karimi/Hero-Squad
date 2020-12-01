@@ -1,0 +1,27 @@
+{{#partial "content"}}
+    <div class="text-center">
+        <h2><u>{{hero.name}}</u></h2>
+        {{#if hero.squadAlliance}}
+            <h6><b>Squad: </b>{{hero.squadAlliance}}</h6>
+        {{else}}
+            <h6><b>Squad: </b>None</h6>
+        {{/if}}
+        <div class="row">
+            <div class="col-md-4">
+                <h5>Age</h5>
+                <p>{{hero.age}}</p>
+            </div>
+            <div class="col-md-4">
+                <h5>Strength</h5>
+                <p>{{hero.power}}</p>
+            </div>
+            <div class="col-md-4">
+                <h5>Weakness</h5>
+                <p>{{hero.weakness}}</p>
+            </div>
+        </div>
+        <a class="btn btn-outline-primary" href="/heros/{{hero.heroID}}/update">Update Info</a>
+        <a class="btn btn-outline-danger" href="/heroes/{{hero.heroID}}/remove">Delete Permanently</a>
+    </div>
+{{/partial}}
+{{> layout.hbs}}
